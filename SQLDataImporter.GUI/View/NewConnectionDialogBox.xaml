@@ -1,0 +1,46 @@
+﻿<Window x:Class="SQLImporter.View.NewConnectionDialogBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="New Connection" Height="300" Width="300"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner">
+    <DockPanel LastChildFill="False">
+
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Name="okButton" IsDefault="True" Click="ok_button_click">OK</Button>
+            <Button Name="cancelButton" IsCancel="True">Cancel</Button>
+        </StackPanel>
+
+
+        <Grid Height="Auto" DockPanel.Dock="Top" Margin="5 5 5 5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0">Server name:</Label>
+            <TextBox Grid.Row="0" Grid.Column="1" Name="serverNameTextBox"></TextBox>
+
+            <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0 10 0 3">
+                <Label>Authentication</Label>
+                <RadioButton Name="winauthRadiobutton" Checked="winauth_checked">Use Windows Authentication</RadioButton>
+                <RadioButton Name="sqlauthRadiobutton" Checked="sqlauth_checked">Use SQL Server Authentication</RadioButton>
+            </StackPanel>
+
+
+            <Label Grid.Row="2" Grid.Column="0">User name:</Label>
+            <TextBox Grid.Row="2" Grid.Column="1" Name="userNameTextBox"></TextBox>
+
+            <Label Grid.Row="3" Grid.Column="0">Password:</Label>
+            <PasswordBox Grid.Row="3" Grid.Column="1" Name="passwordPasswordBox"></PasswordBox>
+
+        </Grid>
+
+    </DockPanel>
+</Window>

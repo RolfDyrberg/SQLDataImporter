@@ -1,0 +1,106 @@
+﻿<UserControl x:Class="SQLImporter.View.ColumnMappingControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:viewModel="clr-namespace:SQLImporter.ViewModel"
+             xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        
+        <DataTemplate x:Key="excelTemplate">
+            <StackPanel>
+                <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.ConnectionPageViewModel.SourceColumnHeaders}"
+                          SelectedItem="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.SourceHeader}"/>
+                <Label />
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="tableTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <ComboBox Grid.Row="0" Grid.Column="0"
+                    ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.MappingPageViewModel.TableMappings}" DisplayMemberPath="TableMappingReference"
+                    SelectedItem="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.SourceTableMapping}" />
+                <ComboBox Grid.Row="1" Grid.Column="0" 
+                    ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.SourceColumnMappings}" DisplayMemberPath="Name"
+                    SelectedItem="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.SourceColumn}" />
+            </Grid> 
+            
+        </DataTemplate>
+
+        <DataTemplate x:Key="nullTemplate">
+            <StackPanel>
+                <Label Background="LightGray" Height="22"/>
+                <Label />
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="literalTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <ComboBox Grid.Row="0" Grid.Column="0"
+                    ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.MappingPageViewModel.LiteralTypes}"
+                    SelectedItem="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.LiteralType}" />
+                <TextBox Grid.Row="1" Grid.Column="0" Padding="2" Margin="0" Height="22"  
+                         Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, 
+                                UpdateSourceTrigger=PropertyChanged, Path=DataContext.Literal}" BorderBrush="Black" BorderThickness="1" />
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Label Background="Gray" Content="{Binding NameEscaped}" Grid.Row="0" Grid.Column="0"/>
+        <ComboBox ItemsSource="{Binding AllowedColumnUses}" SelectedItem="{Binding ColumnUse}"  Grid.Row="1" Grid.Column="0"/>
+        <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.MappingPageViewModel.ImportTypes}"
+                  SelectedItem="{Binding ImportType}" Grid.Row="2" Grid.Column="0"/>
+        <ContentControl Grid.Row="3" Grid.Column="0" Grid.RowSpan="2">
+            <ContentControl.Style>
+                <Style TargetType="ContentControl">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ImportType}" Value="Excel">
+                            <Setter Property="ContentTemplate" Value="{StaticResource excelTemplate}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ImportType}" Value="Null">
+                            <Setter Property="ContentTemplate" Value="{StaticResource nullTemplate}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ImportType}" Value="Table">
+                            <Setter Property="ContentTemplate" Value="{StaticResource tableTemplate}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ImportType}" Value="Literal">
+                            <Setter Property="ContentTemplate" Value="{StaticResource literalTemplate}" />
+                        </DataTrigger>
+                        
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+            
+        </ContentControl>
+        
+    </Grid>
+    
+</UserControl>

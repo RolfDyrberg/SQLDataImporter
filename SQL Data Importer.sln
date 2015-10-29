@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLDataImporter.GUI", "SQLDataImporter.GUI\SQLDataImporter.GUI.csproj", "{7360D5EF-A2F0-4B50-9D8E-AAEEBDD88B16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLDataImporter.Model", "SQLDataImporter.Model\SQLDataImporter.Model.csproj", "{5D419925-C188-4BB7-86FC-6D4FFED221FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLDataImporter.Test", "SQLDataImporter.Test\SQLDataImporter.Test.csproj", "{773A0C1C-193E-440B-A770-ACE2D1774A44}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7360D5EF-A2F0-4B50-9D8E-AAEEBDD88B16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7360D5EF-A2F0-4B50-9D8E-AAEEBDD88B16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7360D5EF-A2F0-4B50-9D8E-AAEEBDD88B16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7360D5EF-A2F0-4B50-9D8E-AAEEBDD88B16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D419925-C188-4BB7-86FC-6D4FFED221FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D419925-C188-4BB7-86FC-6D4FFED221FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D419925-C188-4BB7-86FC-6D4FFED221FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D419925-C188-4BB7-86FC-6D4FFED221FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{773A0C1C-193E-440B-A770-ACE2D1774A44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{773A0C1C-193E-440B-A770-ACE2D1774A44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{773A0C1C-193E-440B-A770-ACE2D1774A44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{773A0C1C-193E-440B-A770-ACE2D1774A44}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = .
+	EndGlobalSection
+EndGlobal

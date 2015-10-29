@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="SQLImporter.View.WizardConnectionPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="450" Background="White">
+
+    <Grid Grid.Row="0" Grid.Column="1" Margin="4">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Grid.Row="0" Grid.Column="0">
+            <GroupBox.Header>Excel File</GroupBox.Header>
+            <StackPanel>
+                <DockPanel LastChildFill="True">
+                    <Label DockPanel.Dock="Left">Filename</Label>
+                    <Button DockPanel.Dock="Right" Click="Excel_Browse_File_Button_Click">Browse...</Button>
+                    <TextBox Margin="0 2 0 0" Height="20" Text="{Binding SourcePath}" ></TextBox>
+                </DockPanel>
+                <DockPanel LastChildFill="True">
+                    <Label>Workseet</Label>
+                    <ComboBox ItemsSource="{Binding SourceWorkSheets}" SelectedItem="{Binding SelectedWorkSheet}"></ComboBox>
+                </DockPanel>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Row="1" Grid.Column="0">
+            <GroupBox.Header>SQL Server Connection</GroupBox.Header>
+
+            <StackPanel Orientation="Vertical">
+                <Grid Height="Auto" DockPanel.Dock="Top" Margin="5 5 5 5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0">Server name:</Label>
+                    <TextBox Grid.Row="0" Grid.Column="1" Name="serverNameTextBox" Text="{Binding ConnectionSetup.ServerName}"></TextBox>
+
+                    <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0 10 0 3">
+                        <Label>Authentication</Label>
+                        <RadioButton Name="winauthRadiobutton" Checked="winauth_checked">Use Windows Authentication</RadioButton>
+                        <RadioButton Name="sqlauthRadiobutton" Checked="sqlauth_checked">Use SQL Server Authentication</RadioButton>
+                    </StackPanel>
+
+
+                    <Label Grid.Row="2" Grid.Column="0">User name:</Label>
+                    <TextBox Grid.Row="2" Grid.Column="1" Name="userNameTextBox" Text="{Binding ConectionSetup.UserName}" />
+
+                    <Label Grid.Row="3" Grid.Column="0">Password:</Label>
+                    <PasswordBox Grid.Row="3" Grid.Column="1" Name="passwordPasswordBox" />
+
+                </Grid>
+                <Label>Database</Label>
+                <DockPanel>
+                    <Button Click="Refresh_Button_Click">Refresh</Button>
+                    <ComboBox ItemsSource="{Binding DatabaseNames}"  
+                              SelectedItem="{Binding SelectedDatabaseName}"/>
+                </DockPanel>
+            </StackPanel>
+
+
+        </GroupBox>
+
+    </Grid>
+</UserControl>

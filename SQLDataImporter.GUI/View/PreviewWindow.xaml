@@ -1,0 +1,12 @@
+﻿<Window x:Class="SQLImporter.View.PreviewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Preview SQL" Height="400" Width="500"
+        WindowStartupLocation="CenterOwner">
+    <Grid>
+        <ScrollViewer>
+            <TextBox Name="SQLPreviewTextBox" IsReadOnly="True" Background="Transparent" 
+                     BorderThickness="0" TextWrapping="Wrap" VerticalAlignment="Top" />
+        </ScrollViewer>
+    </Grid>
+</Window>

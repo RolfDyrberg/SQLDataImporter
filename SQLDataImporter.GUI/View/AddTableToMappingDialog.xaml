@@ -1,0 +1,17 @@
+﻿<Window x:Class="SQLImporter.View.AddTableToMappingDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Choose Table" Height="300" Width="300"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner">
+    <DockPanel>
+        
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Name="okButton" Click="Ok_Button_Click" IsDefault="True">OK</Button>
+            <Button Name="cancelButton" IsCancel="True">Cancel</Button>
+        </StackPanel>
+
+        <ListBox Name="TablesListBox" DockPanel.Dock="Top" ItemsSource="{Binding ConnectionPageViewModel.SelectedDatabaseTables}" DisplayMemberPath="Reference" />
+        
+    </DockPanel>
+</Window>
